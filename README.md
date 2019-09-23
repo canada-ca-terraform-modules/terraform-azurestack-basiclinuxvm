@@ -26,20 +26,16 @@ Optional (depending on options configured):
 
 ```terraform
 module "dockerweb" {
-  source = "github.com/canada-ca-terraform-modules/simplevm?ref=20190916.1"
+  source = "github.com/canada-ca-terraform-modules/terraform-azurestack-basiclinuxvm?ref=20190923.1"
 
   name                              = "dockerweb"
   resource_group_name               = "some-RG-Name"
   admin_username                    = "someusername"
-  secretPasswordName                = "somekeyvaultsecretname"
+  admin_password                    = "somekeyvaultsecretname"
   nic_subnetName                    = "some-subnet-name"
   nic_vnetName                      = "some-vnet-name"
-  nic_resource_group_name           = "some-vnet-resourcegroup-name"
+  nic_vnet_resource_group_name      = "some-vnet-resourcegroup-name"
   vm_size                           = "Standard_D2_v3"
-  keyvault = {
-    name                = "some-keyvault-name"
-    resource_group_name = "some-keyvault-resourcegroup-name"
-  }
 }
 ```
 
