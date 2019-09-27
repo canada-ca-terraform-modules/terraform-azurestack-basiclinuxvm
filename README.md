@@ -21,7 +21,7 @@ Hard:
 
 ```terraform
 module "dockerweb" {
-  source = "github.com/canada-ca-terraform-modules/terraform-azurestack-basiclinuxvm?ref=20190923.1"
+  source = "github.com/canada-ca-terraform-modules/terraform-azurestack-basiclinuxvm?ref=20190927.1"
 
   name                              = "dockerweb"
   resource_group_name               = "some-RG-Name"
@@ -208,6 +208,7 @@ plan = {
 
 ## History
 
-| Date     | Release    | Change             |
-| -------- | ---------- | ------------------ |
-| 20190923 | 20190923.1 | 1st module release |
+| Date     | Release    | Change                        |
+| -------- | ---------- | ----------------------------- |
+| 20190927 | 20190927.1 | Adding boot diagnostic option |
+| 20190923 | 20190923.1 | 1st module release            |
