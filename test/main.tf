@@ -25,16 +25,32 @@ resource "azurestack_subnet" "paz-snet" {
 }
 
 module "tst-lin01" {
-  source                       = "../."
-  location                     = "ssccentral"
-  name                         = "tst-lin01"
-  resource_group_name          = azurestack_resource_group.RDS-rg.name
-  admin_username               = "azureadmin"
-  admin_password               = "Canada123!"
-  vm_size                      = "Standard_F4"
-  public_ip                    = true
+  source              = "../."
+  location            = "ssccentral"
+  name                = "tst-lin01"
+  resource_group_name = azurestack_resource_group.RDS-rg.name
+  admin_username      = "azureadmin"
+  admin_password      = "Canada123!"
+  vm_size             = "Standard_F4"
+  public_ip           = true
   #custom_data                  = "${file("./custom.ps1")}"
   nic_subnetName               = azurestack_subnet.paz-snet.name
   nic_vnetName                 = azurestack_virtual_network.RDS-vnet.name
   nic_vnet_resource_group_name = azurestack_resource_group.RDS-rg.name
+}
+
+module "tst-lin02" {
+  source              = "../."
+  location            = "ssccentral"
+  name                = "tst-lin02"
+  resource_group_name = azurestack_resource_group.RDS-rg.name
+  admin_username      = "azureadmin"
+  admin_password      = "Canada123!"
+  vm_size             = "Standard_F4"
+  public_ip           = true
+  #custom_data                  = "${file("./custom.ps1")}"
+  nic_subnetName               = azurestack_subnet.paz-snet.name
+  nic_vnetName                 = azurestack_virtual_network.RDS-vnet.name
+  nic_vnet_resource_group_name = azurestack_resource_group.RDS-rg.name
+  diagnostic                   = true
 }

@@ -31,6 +31,15 @@ resource azurestack_network_security_group NSG {
   tags = "${var.tags}"
 }
 
+resource "azurestack_storage_account" "boot_diagnostic" {
+  count                    = var.boot_diagnostic ? 1 : 0
+  name                     = "${local.storageName}"
+  resource_group_name      = "${var.resource_group_name}"
+  location                 = "${var.location}"
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+
 # If public_ip is true then create resource. If not then do not create any
 resource azurestack_public_ip VM-EXT-PubIP {
   count                        = var.public_ip ? length(var.nic_ip_configuration.private_ip_address_allocation) : 0
@@ -119,6 +128,13 @@ resource azurestack_virtual_machine VM {
       lun           = "${storage_data_disk.key}"
       disk_size_gb  = "${storage_data_disk.value}"
       caching       = "ReadWrite"
+    }
+  }
+  dynamic "boot_diagnostics" {
+    for_each = "${local.boot_diagnostic}"
+    content {
+      enabled = true
+      storage_uri = azurestack_storage_account.boot_diagnostic[0].primary_blob_endpoint
     }
   }
   tags = "${var.tags}"

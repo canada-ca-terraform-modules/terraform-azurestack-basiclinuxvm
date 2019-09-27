@@ -138,3 +138,7 @@ variable "license_type" {
   description = "BYOL license type for those with Azure Hybrid Benefit"
   default     = null
 }
+
+variable "boot_diagnostic" {
+  default = false
+}
