@@ -15,12 +15,7 @@ The following security controls can be met through configuration of this templat
 Hard:
 
 * Resource Groups
-* Keyvault
 * VNET-Subnet
-
-Optional (depending on options configured):
-
-* log analytics workspace
 
 ## Usage
 
@@ -70,6 +65,7 @@ module "dockerweb" {
 | ?monitoringAgent                   | object | no       | Configure Azure monitoring on VM. Requires configured log analytics workspace. - [monitoring agent](#monitoring-agent-object)                                                                               |
 | ?shutdownConfig                    | object | no       | Configure desired VM shutdown time - [shutdown config](#shutdown-config-object)                                                                                                                             |
 | license_type                       | string | no       | BYOL license type for those with Azure Hybrid Benefit                                                                                                                                                       |
+| boot_diagnostic                    | bool   | no       | Should a boot be turned on or not. Default: false                                                                                                                                                           |
 
 ### tag object
 
