@@ -210,5 +210,5 @@ plan = {
 
 | Date     | Release    | Change                        |
 | -------- | ---------- | ----------------------------- |
-| 20190927 | 20190927.1 | Adding boot diagnostic option |
+| 20190927 | 20190927.2 | Adding boot diagnostic option |
 | 20190923 | 20190923.1 | 1st module release            |
