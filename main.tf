@@ -51,12 +51,12 @@ resource azurestack_public_ip VM-EXT-PubIP {
 }
 
 resource azurestack_network_interface NIC {
-  name                          = "${var.name}-nic1"
-  location                      = "${var.location}"
-  resource_group_name           = "${var.resource_group_name}"
-  enable_ip_forwarding          = "${var.nic_enable_ip_forwarding}"
-  network_security_group_id     = "${azurestack_network_security_group.NSG.id}"
-  dns_servers                   = "${var.dnsServers}"
+  name                      = "${var.name}-nic1"
+  location                  = "${var.location}"
+  resource_group_name       = "${var.resource_group_name}"
+  enable_ip_forwarding      = "${var.nic_enable_ip_forwarding}"
+  network_security_group_id = "${azurestack_network_security_group.NSG.id}"
+  dns_servers               = "${var.dnsServers}"
   dynamic "ip_configuration" {
     for_each = var.nic_ip_configuration.private_ip_address_allocation
     content {
@@ -82,6 +82,7 @@ resource azurestack_virtual_machine VM {
   delete_data_disks_on_termination = "true"
   delete_os_disk_on_termination    = "true"
   license_type                     = "${var.license_type == null ? null : var.license_type}"
+  availability_set_id              = var.availability_set_id
   os_profile {
     computer_name  = "${var.name}"
     admin_username = "${var.admin_username}"
@@ -97,8 +98,8 @@ resource azurestack_virtual_machine VM {
   dynamic "plan" {
     for_each = "${local.plan}"
     content {
-      name = "${local.plan[0].name}"
-      product = "${local.plan[0].product}"
+      name      = "${local.plan[0].name}"
+      product   = "${local.plan[0].product}"
       publisher = "${local.plan[0].publisher}"
     }
   }
@@ -108,7 +109,7 @@ resource azurestack_virtual_machine VM {
       for_each = local.ssh_key
       content {
         key_data = "${local.ssh_key[0]}"
-        path = "/home/${var.admin_username}/.ssh/authorized_keys"
+        path     = "/home/${var.admin_username}/.ssh/authorized_keys"
       }
     }
   }
@@ -133,7 +134,7 @@ resource azurestack_virtual_machine VM {
   dynamic "boot_diagnostics" {
     for_each = "${local.boot_diagnostic}"
     content {
-      enabled = true
+      enabled     = true
       storage_uri = azurestack_storage_account.boot_diagnostic[0].primary_blob_endpoint
     }
   }

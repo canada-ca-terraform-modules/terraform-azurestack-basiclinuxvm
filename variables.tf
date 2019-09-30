@@ -142,3 +142,8 @@ variable "license_type" {
 variable "boot_diagnostic" {
   default = false
 }
+
+variable "availability_set_id" {
+  description = "Sets the id for the availability set to use for the VM"
+  default = null
+}

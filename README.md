@@ -66,6 +66,7 @@ module "dockerweb" {
 | ?shutdownConfig                    | object | no       | Configure desired VM shutdown time - [shutdown config](#shutdown-config-object)                                                                                                                             |
 | license_type                       | string | no       | BYOL license type for those with Azure Hybrid Benefit                                                                                                                                                       |
 | boot_diagnostic                    | bool   | no       | Should a boot be turned on or not. Default: false                                                                                                                                                           |
+| availability_set_id                | string | no       | Id of the availaiblity set to join. Default is null.                                                                                                                                                        |
 
 ### tag object
 
@@ -208,7 +209,8 @@ plan = {
 
 ## History
 
-| Date     | Release    | Change                        |
-| -------- | ---------- | ----------------------------- |
-| 20190927 | 20190927.2 | Adding boot diagnostic option |
-| 20190923 | 20190923.1 | 1st module release            |
+| Date     | Release    | Change                             |
+| -------- | ---------- | ---------------------------------- |
+| 20190930 | 20190930.1 | Adding support for availabilityset |
+| 20190927 | 20190927.2 | Adding boot diagnostic option      |
+| 20190923 | 20190923.1 | 1st module release                 |
