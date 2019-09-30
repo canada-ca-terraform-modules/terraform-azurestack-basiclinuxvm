@@ -52,5 +52,5 @@ module "tst-lin02" {
   nic_subnetName               = azurestack_subnet.paz-snet.name
   nic_vnetName                 = azurestack_virtual_network.RDS-vnet.name
   nic_vnet_resource_group_name = azurestack_resource_group.RDS-rg.name
-  diagnostic                   = true
+  boot_diagnostic              = true
 }

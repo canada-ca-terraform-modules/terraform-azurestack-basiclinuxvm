@@ -35,7 +35,7 @@ variable "location" {
 
 variable "tags" {
   description = "Tags that will be associated to VM resources"
-  default = { }
+  default     = {}
 }
 
 variable "data_disk_sizes_gb" {
@@ -45,7 +45,7 @@ variable "data_disk_sizes_gb" {
 
 variable "disable_password_authentication" {
   description = "description"
-  default = "false"
+  default     = "false"
 }
 
 variable "dnsServers" {
@@ -61,9 +61,14 @@ variable "nic_enable_ip_forwarding" {
 variable "nic_ip_configuration" {
   description = "Defines how a private IP address is assigned. Options are Static or Dynamic. In case of Static also specifiy the desired privat IP address"
   default = {
-    private_ip_address            = [null]
-    private_ip_address_allocation = ["Dynamic"]
+    private_ip_address                      = [null]
+    private_ip_address_allocation           = ["Dynamic"]
   }
+}
+
+variable "load_balancer_backend_address_pools_ids" {
+  description = "List of Load Balancer Backend Address Pool IDs references to which this NIC belongs"
+  default     = [[], [], [], [], [], [], [], [], [], [], [], []]
 }
 
 variable "public_ip" {
@@ -96,7 +101,7 @@ variable "storage_os_disk" {
 
 variable "ssh_key" {
   description = "description"
-  default = null
+  default     = null
 }
 
 variable "custom_data" {
@@ -145,5 +150,5 @@ variable "boot_diagnostic" {
 
 variable "availability_set_id" {
   description = "Sets the id for the availability set to use for the VM"
-  default = null
+  default     = null
 }
