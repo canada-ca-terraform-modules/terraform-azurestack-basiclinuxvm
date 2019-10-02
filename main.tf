@@ -115,21 +115,23 @@ resource azurestack_virtual_machine VM {
     }
   }
   storage_os_disk {
-    name          = "${var.name}-osdisk1"
-    caching       = "${var.storage_os_disk.caching}"
-    create_option = "${var.storage_os_disk.create_option}"
-    os_type       = "${var.storage_os_disk.os_type}"
-    disk_size_gb  = "${var.storage_os_disk.disk_size_gb}"
+    name              = "${var.name}-osdisk1"
+    caching           = "${var.storage_os_disk.caching}"
+    create_option     = "${var.storage_os_disk.create_option}"
+    os_type           = "${var.storage_os_disk.os_type}"
+    disk_size_gb      = "${var.storage_os_disk.disk_size_gb}"
+    managed_disk_type = "${var.os_managed_disk_type}"
   }
   # This is where the magic to dynamically create storage disk operate
   dynamic "storage_data_disk" {
     for_each = "${var.data_disk_sizes_gb}"
     content {
-      name          = "${var.name}-datadisk${storage_data_disk.key + 1}"
-      create_option = "Empty"
-      lun           = "${storage_data_disk.key}"
-      disk_size_gb  = "${storage_data_disk.value}"
-      caching       = "ReadWrite"
+      name              = "${var.name}-datadisk${storage_data_disk.key + 1}"
+      create_option     = "Empty"
+      lun               = "${storage_data_disk.key}"
+      disk_size_gb      = "${storage_data_disk.value}"
+      caching           = "ReadWrite"
+      managed_disk_type = "${var.data_managed_disk_type}"
     }
   }
   dynamic "boot_diagnostics" {

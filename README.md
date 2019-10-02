@@ -49,6 +49,8 @@ module "dockerweb" {
 | location                                | string | no       | Azure location for resources. Default: canadacentral                                                                                                                                                        |
 | tags                                    | object | no       | Object containing a tag values - [tags pairs](#tag-object)                                                                                                                                                  |
 | data_disk_sizes_gb                      | list   | no       | List of data disk sizes in gigabytes required for the VM. - [data disk](#data-disk-list)                                                                                                                    |
+| os_managed_disk_type                    | string | no       | Specifies the type of OS Managed Disk which should be created. Possible values are Standard_LRS or Premium_LRS. Default: Standard_LRS                                                                       |
+| data_managed_disk_type                  | string | no       | Specifies the type of Data Managed Disk which should be created. Possible values are Standard_LRS or Premium_LRS. Default: Standard_LRS                                                                     |
 | disable_password_authentication         | boot   | no       | Specifies whether password authentication should be disabled. If set to false, an admin_password must be specified. - Default: false                                                                        |
 | dnsServers                              | list   | no       | List of DNS servers IP addresses as string to use for this NIC, overrides the VNet-level dns server list - [dns servers](#dns-servers-list)                                                                 |
 | nic_enable_ip_forwarding                | bool   | no       | Enables IP Forwarding on the NIC. Default: false                                                                                                                                                            |
@@ -211,9 +213,10 @@ plan = {
 
 ## History
 
-| Date     | Release    | Change                              |
-| -------- | ---------- | ----------------------------------- |
-| 20190930 | 20190930.2 | Add support for LB backend pool IDs |
-| 20190930 | 20190930.1 | Adding support for availabilityset  |
-| 20190927 | 20190927.2 | Adding boot diagnostic option       |
-| 20190923 | 20190923.1 | 1st module release                  |
+| Date     | Release    | Change                                          |
+| -------- | ---------- | ----------------------------------------------- |
+| 20191002 | 20191002.1 | Adding support fo os and data managed disk type |
+| 20190930 | 20190930.2 | Add support for LB backend pool IDs             |
+| 20190930 | 20190930.1 | Adding support for availabilityset              |
+| 20190927 | 20190927.2 | Adding boot diagnostic option                   |
+| 20190923 | 20190923.1 | 1st module release                              |

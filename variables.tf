@@ -99,6 +99,14 @@ variable "storage_os_disk" {
   }
 }
 
+variable "os_managed_disk_type" {
+  default = "Standard_LRS"
+}
+
+variable "data_managed_disk_type" {
+  default = "Standard_LRS"
+}
+
 variable "ssh_key" {
   description = "description"
   default     = null
