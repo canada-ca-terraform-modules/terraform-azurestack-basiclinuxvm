@@ -213,10 +213,11 @@ plan = {
 
 ## History
 
-| Date     | Release    | Change                                          |
-| -------- | ---------- | ----------------------------------------------- |
-| 20191002 | 20191002.1 | Adding support fo os and data managed disk type |
-| 20190930 | 20190930.2 | Add support for LB backend pool IDs             |
-| 20190930 | 20190930.1 | Adding support for availabilityset              |
-| 20190927 | 20190927.2 | Adding boot diagnostic option                   |
-| 20190923 | 20190923.1 | 1st module release                              |
+| Date     | Release    | Change                                           |
+| -------- | ---------- | ------------------------------------------------ |
+| 20191015 | 20191015.1 | Adopt new VM resource naming convention          |
+| 20191002 | 20191002.1 | Adding support for os and data managed disk type |
+| 20190930 | 20190930.2 | Add support for LB backend pool IDs              |
+| 20190930 | 20190930.1 | Adding support for availabilityset               |
+| 20190927 | 20190927.2 | Adding boot diagnostic option                    |
+| 20190923 | 20190923.1 | 1st module release                               |
