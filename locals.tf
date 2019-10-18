@@ -7,5 +7,6 @@ locals {
   unique          = "${substr(sha1("${data.azurestack_resource_group.resourceGroup.id}"), 0, 8)}"
   fixname         = "${replace("${var.name}", "-", "")}"
   fixname2        = "${replace("${var.name}", "_", "")}"
-  storageName     = "${lower("${local.fixname2}diag${local.unique}")}"
+  fixname3        = "${substr("${local.fixname2}diag", 0, 16)}"
+  storageName     = "${lower("${local.fixname3}${local.unique}")}"
 }
