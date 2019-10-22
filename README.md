@@ -70,6 +70,7 @@ module "dockerweb" {
 | license_type                            | string | no       | BYOL license type for those with Azure Hybrid Benefit                                                                                                                                                       |
 | boot_diagnostic                         | bool   | no       | Should a boot be turned on or not. Default: false                                                                                                                                                           |
 | availability_set_id                     | string | no       | Id of the availaiblity set to join. Default is null.                                                                                                                                                        |
+| use_nic_nsg                             | bool   | no       | Should an NSG be created and assigned to the VM NIC - Default: true                                                                                                                                         |
 
 ### tag object
 
@@ -215,6 +216,7 @@ plan = {
 
 | Date     | Release    | Change                                           |
 | -------- | ---------- | ------------------------------------------------ |
+| 20191022 | 20191022.1 | Optional support for not creating NIC NSG        |
 | 20191015 | 20191015.1 | Adopt new VM resource naming convention          |
 | 20191002 | 20191002.1 | Adding support for os and data managed disk type |
 | 20190930 | 20190930.2 | Add support for LB backend pool IDs              |

@@ -32,13 +32,14 @@ module "tst-lin01" {
   admin_username      = "azureadmin"
   admin_password      = "Canada123!"
   vm_size             = "Standard_F4"
-  public_ip           = true
+  public_ip           = false
+  use_nic_nsg         = false
   #custom_data                  = "${file("./custom.ps1")}"
   nic_subnetName               = azurestack_subnet.paz-snet.name
   nic_vnetName                 = azurestack_virtual_network.RDS-vnet.name
   nic_vnet_resource_group_name = azurestack_resource_group.RDS-rg.name
 }
-
+/*
 module "tst-lin02" {
   source              = "../."
   location            = "ssccentral"
@@ -54,3 +55,4 @@ module "tst-lin02" {
   nic_vnet_resource_group_name = azurestack_resource_group.RDS-rg.name
   boot_diagnostic              = true
 }
+*/

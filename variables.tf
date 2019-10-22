@@ -61,8 +61,8 @@ variable "nic_enable_ip_forwarding" {
 variable "nic_ip_configuration" {
   description = "Defines how a private IP address is assigned. Options are Static or Dynamic. In case of Static also specifiy the desired privat IP address"
   default = {
-    private_ip_address                      = [null]
-    private_ip_address_allocation           = ["Dynamic"]
+    private_ip_address            = [null]
+    private_ip_address_allocation = ["Dynamic"]
   }
 }
 
@@ -159,4 +159,9 @@ variable "boot_diagnostic" {
 variable "availability_set_id" {
   description = "Sets the id for the availability set to use for the VM"
   default     = null
+}
+
+variable "use_nic_nsg" {
+  description = "Should an NSG be created and assigned to the VM NIC"
+  default     = true
 }
