@@ -26,6 +26,8 @@ resource "azurestack_subnet" "paz-snet" {
 
 module "tst-lin01" {
   source              = "../."
+  vm_depends_on       = ["${azurestack_subnet.paz-snet}", "${azurestack_virtual_network.RDS-vnet}"]
+  #nic_depends_on       = ["${azurestack_subnet.paz-snet}", "${azurestack_virtual_network.RDS-vnet}"]
   location            = "ssccentral"
   name                = "tst-lin01"
   resource_group_name = azurestack_resource_group.RDS-rg.name
