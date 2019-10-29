@@ -25,17 +25,37 @@ resource "azurestack_subnet" "paz-snet" {
 }
 
 module "tst-lin01" {
-  source              = "../."
-  vm_depends_on       = ["${azurestack_subnet.paz-snet}", "${azurestack_virtual_network.RDS-vnet}"]
+  source        = "../."
+  vm_depends_on = ["${azurestack_subnet.paz-snet}", "${azurestack_virtual_network.RDS-vnet}"]
   #nic_depends_on       = ["${azurestack_subnet.paz-snet}", "${azurestack_virtual_network.RDS-vnet}"]
   location            = "ssccentral"
-  name                = "tst-lin01"
+  name                = "tst-linux-longname-01"
   resource_group_name = azurestack_resource_group.RDS-rg.name
   admin_username      = "azureadmin"
   admin_password      = "Canada123!"
-  vm_size             = "Standard_F4"
+  vm_size             = "Standard_F1"
   public_ip           = false
   use_nic_nsg         = false
+  boot_diagnostic     = true
+  #custom_data                  = "${file("./custom.ps1")}"
+  nic_subnetName               = azurestack_subnet.paz-snet.name
+  nic_vnetName                 = azurestack_virtual_network.RDS-vnet.name
+  nic_vnet_resource_group_name = azurestack_resource_group.RDS-rg.name
+}
+
+module "tst-lin03" {
+  source        = "../."
+  vm_depends_on = ["${azurestack_subnet.paz-snet}", "${azurestack_virtual_network.RDS-vnet}"]
+  #nic_depends_on       = ["${azurestack_subnet.paz-snet}", "${azurestack_virtual_network.RDS-vnet}"]
+  location            = "ssccentral"
+  name                = "tst-linux-longname-03"
+  resource_group_name = azurestack_resource_group.RDS-rg.name
+  admin_username      = "azureadmin"
+  admin_password      = "Canada123!"
+  vm_size             = "Standard_F1"
+  public_ip           = false
+  use_nic_nsg         = false
+  boot_diagnostic     = true
   #custom_data                  = "${file("./custom.ps1")}"
   nic_subnetName               = azurestack_subnet.paz-snet.name
   nic_vnetName                 = azurestack_virtual_network.RDS-vnet.name
